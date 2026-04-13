@@ -32,7 +32,7 @@ function updateScreen(){
 function showMessage(text){
   messageEl.textContent = text;
 }
-clickBtn.addEventListener('clickck', () => {
+clickBtn.addEventListener('click', () => {
   score += power;
   updateScreen();
 });
@@ -58,3 +58,14 @@ autoBtn.addEventListener('click', () => {
     showMessage('Не хватает очков');
   }
 });
+setInterval(() => {
+
+  if (autoClickers > 0) {
+
+    for (let i = 0; i < autoClickers; i++) {
+      clickBtn.click();
+    }
+
+  }
+
+}, 1000);
