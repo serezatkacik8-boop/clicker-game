@@ -32,6 +32,26 @@ function updateScreen(){
 function showMessage(text){
   messageEl.textContent = text;
 }
+function saveGame() {
+  localStorage.setItem('score', score);
+  localStorage.setItem('power', power);
+  localStorage.setItem('autoClickers', autoClickers);
+}
+function loadGame() {
+  const savedScore = localStorage.getItem('score');
+  const savedPover = localStorage.getItem('power');
+  const savedAutoClickers = localStorage.getItem('autoClickers');
+  if(savedScore !== null){
+    score = Number(savedScore);
+  }
+    if (savedPower !== null) {
+    power = Number(savedPower);
+  }
+
+  if (savedAutoClickers !== null) {
+    autoClickers = Number(savedAutoClickers);
+  }
+}
 clickBtn.addEventListener('click', () => {
   score += power;
   updateScreen();
@@ -69,3 +89,5 @@ setInterval(() => {
   }
 
 }, 1000);
+loadGame();
+updateScreen();
